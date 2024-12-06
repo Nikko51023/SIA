@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gym Equipment Database</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <h1>Gym Equipment Database</h1>
+        <form action="/add_equipment" method="post">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+            <br>
+            <label>Category:</label>
+            <input type="text" name="category" required>
+            <br>
+            <label>Year Acquired:</label>
+            <input type="text" name="year_acquired" required>
+            <br>
+            <input type="submit" value="Add Equipment">
+        </form>
+
+        <h2>Equipment List</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Year Acquired</th>
+            </tr>
+            {% for item in equipment %}
+            <tr>
+                <td>{{ item['name'] }}</td>
+                <td>{{ item['category'] }}</td>
+                <td>{{ item['year_acquired'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
